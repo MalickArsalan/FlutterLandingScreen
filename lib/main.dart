@@ -146,8 +146,11 @@ Widget customNavigationBar(BuildContext context) {
 
 Widget buildTabButton(
     BuildContext context, String imageName, String buttonText) {
-  return InkWell(
-    onTap: () {},
+  return GestureDetector(
+    onTap: () {
+      print('$buttonText');
+    },
+
     child: Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
