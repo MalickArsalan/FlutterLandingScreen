@@ -33,7 +33,7 @@ class AlFardan extends StatelessWidget {
                 AssetImage('images/bg-landing-two.png'),
                 AssetImage('images/bg-landing-three.png'),
               ],
-              autoplay: false,
+              autoplay: true,
               showIndicator: false,
             ),
           ),
