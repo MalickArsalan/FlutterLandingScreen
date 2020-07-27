@@ -1,3 +1,4 @@
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 // import 'package:carousel_slider/carousel_slider.dart';
 // import 'package:carousel_pro/carousel_pro.dart';
@@ -16,27 +17,41 @@ class AlFardan extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          constraints: BoxConstraints.expand(),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('images/bg-landing-two.png'),
-              fit: BoxFit.cover,
+        child: Stack(children: <Widget>[
+          Container(
+            constraints: BoxConstraints.expand(),
+            // decoration: BoxDecoration(
+            //   image: DecorationImage(
+            //     image: AssetImage('images/bg-landing-two.png'),
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
+            child: Carousel(
+              boxFit: BoxFit.cover,
+              images: [
+                AssetImage('images/bg-landing.png'),
+                AssetImage('images/bg-landing-two.png'),
+                AssetImage('images/bg-landing-three.png'),
+              ],
+              autoplay: false,
+              showIndicator: false,
             ),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              topLogo(context),
-              Container(height: MediaQuery.of(context).size.height / 2.07),
-              buildButton(context, 'SEND MONEY', 0xFFFFEE58, 0xFFFFFFFF, 1.0),
-              buildButton(
-                  context, 'LOGIN / REGISTER', 0xFFFFFFFF, 0xFFFFEE58, 0.7),
-              Container(height: MediaQuery.of(context).size.height / 14.2),
-              customNavigationBar(context),
-            ],
+          Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                topLogo(context),
+                Container(height: MediaQuery.of(context).size.height / 2.07),
+                buildButton(context, 'SEND MONEY', 0xFFFFEE58, 0xFFFFFFFF, 1.0),
+                buildButton(
+                    context, 'LOGIN / REGISTER', 0xFFFFFFFF, 0xFFFFEE58, 0.7),
+                Container(height: MediaQuery.of(context).size.height / 14.2),
+                customNavigationBar(context),
+              ],
+            ),
           ),
-        ),
+        ]),
       ),
     );
   }
@@ -152,5 +167,6 @@ Widget buildTabButton(
         ],
       ),
     ),
+    // highlightColor: ,
   );
 }
