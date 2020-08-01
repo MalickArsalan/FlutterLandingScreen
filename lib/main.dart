@@ -33,8 +33,13 @@ class AlFardan extends StatelessWidget {
                 AssetImage('images/bg-landing-two.png'),
                 AssetImage('images/bg-landing-three.png'),
               ],
-              autoplay: true,
-              showIndicator: false,
+              autoplay: false,
+              showIndicator: true,
+              dotVerticalPadding: MediaQuery.of(context).size.height / 8.5,
+              dotSize: 10,
+              dotIncreaseSize: 1.2,
+              dotColor: Colors.grey.shade300.withOpacity(0.9),
+              dotBgColor: Colors.black.withOpacity(0.0),
             ),
           ),
           Container(
@@ -85,7 +90,9 @@ Widget buildButton(BuildContext context, String buttonText, int buttonColor,
       height: MediaQuery.of(context).size.height / 15.0,
       child: RaisedButton(
         color: Color(buttonColor).withOpacity(buttonOpacity),
-        onPressed: () {},
+        onPressed: () {
+          if (buttonText == 'LOGIN / REGISTER') {}
+        },
         child: Container(
           width: MediaQuery.of(context).size.width / 1.56,
           child: Row(
@@ -119,39 +126,38 @@ Widget buildButton(BuildContext context, String buttonText, int buttonColor,
 }
 
 Widget customNavigationBar(BuildContext context) {
-  return GestureDetector(
-    child: Container(
-      decoration: BoxDecoration(
-        color: Colors.green,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(10),
-          topRight: Radius.circular(10),
-        ),
+  return Container(
+    decoration: BoxDecoration(
+      color: Colors.green,
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(10),
+        topRight: Radius.circular(10),
       ),
-      width: MediaQuery.of(context).size.width / 1.2,
-      height: MediaQuery.of(context).size.height / 9,
-      alignment: Alignment.center,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          buildTabButton(context, 'rates', 'Rates'),
-          buildTabButton(context, 'product', 'Products'),
-          buildTabButton(context, 'location', 'Branches'),
-          buildTabButton(context, 'more', 'More'),
-        ],
-      ),
+    ),
+    width: MediaQuery.of(context).size.width / 1.2,
+    height: MediaQuery.of(context).size.height / 9,
+    alignment: Alignment.center,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        buildTabButton(context, 'rates', 'Rates'),
+        buildTabButton(context, 'product', 'Products'),
+        buildTabButton(context, 'location', 'Branches'),
+        buildTabButton(context, 'more', 'More'),
+      ],
     ),
   );
 }
 
 Widget buildTabButton(
     BuildContext context, String imageName, String buttonText) {
-  return GestureDetector(
+  return InkWell(
     onTap: () {
       print('$buttonText');
     },
 
     child: Container(
+      width: MediaQuery.of(context).size.width / 4.8,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
